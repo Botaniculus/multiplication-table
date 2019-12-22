@@ -36,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((button4.getText().toString()).equals(kint1*kint2)) {
+                if((button1.getText().toString()).equals(kint1*kint2+"")) {
                     operace();
                     correct=true;
                 } else{
-                    Toast.makeText(getApplicationContext(), (button1.getText().toString()), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), ((int)kint1*(int)kint2)+"", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((button2.getText().toString()).equals(kint1*kint2)) {
+                if((button2.getText().toString()).equals(kint1*kint2+"")) {
                     correct=true;
                     operace();
                 } else{
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((button3.getText().toString()).equals(kint1*kint2)) {
+                if((button3.getText().toString()).equals(kint1*kint2+"")) {
                     correct=true;
                     operace();
                 } else{
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((button4.getText().toString()).equals(kint1*kint2)) {
+                if((button4.getText().toString()).equals(kint1*kint2+"")) {
                     correct=true;
                     operace();
                 } else{
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void kintovani(){
         Kostka k1 = new Kostka(4);
-        Kostka k2=new Kostka(4);
+        Kostka k2=new Kostka(1);
         kint1=k1.hod();
         kint2=k2.hod();
     }
