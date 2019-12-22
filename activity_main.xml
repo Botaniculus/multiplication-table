@@ -18,6 +18,7 @@
         android:textColor="#000"/>
 //https://stackoverflow.com/questions/15002587/make-a-layout-with-4-buttons-resizable?rq=1
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
