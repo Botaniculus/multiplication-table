@@ -1,10 +1,15 @@
 package com.botaniculus.multiplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,9 +21,12 @@ public class MainActivity extends AppCompatActivity {
     Button button4;
     TextView zadaniTxt;
     String display;
+    LinearLayout linearLayout;
     int kint1;
     int kint2;
     boolean correct;
+    int score;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +38,21 @@ public class MainActivity extends AppCompatActivity {
         button3=(Button)findViewById(R.id.button3);
         button4=(Button)findViewById(R.id.button4);
         zadaniTxt=(TextView)findViewById(R.id.zadaniTxt);
+        linearLayout=(LinearLayout)findViewById(R.id.linearLayout);
 
         operace();
+
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if((button1.getText().toString()).equals(kint1*kint2+"")) {
-                    operace();
                     correct=true;
+                    operace();
                 } else{
-                    Toast.makeText(getApplicationContext(), ((int)kint1*(int)kint2)+"", Toast.LENGTH_SHORT).show();
+                    correct=false;
+                    operace();
+                    Toast.makeText(getApplicationContext(), score+"", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -52,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
                     correct=true;
                     operace();
                 } else{
-                    Toast.makeText(getApplicationContext(), (button1.getText().toString()), Toast.LENGTH_SHORT).show();
+                    correct=false;
+                    operace();
+                    Toast.makeText(getApplicationContext(), score+"", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -63,7 +77,9 @@ public class MainActivity extends AppCompatActivity {
                     correct=true;
                     operace();
                 } else{
-                    Toast.makeText(getApplicationContext(), (button1.getText().toString()), Toast.LENGTH_SHORT).show();
+                    correct=false;
+                    operace();
+                    Toast.makeText(getApplicationContext(), score+"", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -74,7 +90,9 @@ public class MainActivity extends AppCompatActivity {
                     correct=true;
                     operace();
                 } else{
-                    Toast.makeText(getApplicationContext(), (button1.getText().toString()), Toast.LENGTH_SHORT).show();
+                    correct=false;
+                    operace();
+                    Toast.makeText(getApplicationContext(), score+"", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -94,7 +112,13 @@ public class MainActivity extends AppCompatActivity {
         kintovani();
         display = (kint1+"x"+kint2);
         novyDisplay();
-    }
+        if(correct){
+            score++;
+        }
+        else{
+            score--;
+        }
 
+    }
 
 }
