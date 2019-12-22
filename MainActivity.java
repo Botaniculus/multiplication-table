@@ -22,9 +22,11 @@ public class MainActivity extends AppCompatActivity {
     TextView zadaniTxt;
     String display;
     LinearLayout linearLayout;
+    TextView scoreTxt;
     int kint1;
     int kint2;
     boolean correct;
+    boolean incorrect;
     int score;
 
 
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         button4=(Button)findViewById(R.id.button4);
         zadaniTxt=(TextView)findViewById(R.id.zadaniTxt);
         linearLayout=(LinearLayout)findViewById(R.id.linearLayout);
+        scoreTxt=(TextView)findViewById(R.id.scoreTxt);
+
 
         operace();
 
@@ -48,11 +52,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if((button1.getText().toString()).equals(kint1*kint2+"")) {
                     correct=true;
+                    incorrect=false;
                     operace();
                 } else{
+                    incorrect=true;
                     correct=false;
                     operace();
-                    Toast.makeText(getApplicationContext(), score+"", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -62,11 +67,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if((button2.getText().toString()).equals(kint1*kint2+"")) {
                     correct=true;
+                    incorrect=false;
                     operace();
                 } else{
+                    incorrect=true;
                     correct=false;
                     operace();
-                    Toast.makeText(getApplicationContext(), score+"", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -75,11 +81,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if((button3.getText().toString()).equals(kint1*kint2+"")) {
                     correct=true;
+                    incorrect=false;
                     operace();
                 } else{
+                    incorrect=true;
                     correct=false;
                     operace();
-                    Toast.makeText(getApplicationContext(), score+"", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -88,11 +95,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if((button4.getText().toString()).equals(kint1*kint2+"")) {
                     correct=true;
+                    incorrect=false;
                     operace();
                 } else{
+                    incorrect=true;
                     correct=false;
                     operace();
-                    Toast.makeText(getApplicationContext(), score+"", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -115,9 +123,12 @@ public class MainActivity extends AppCompatActivity {
         if(correct){
             score++;
         }
-        else{
-            score--;
+        if(incorrect){
+            score=score-2;
         }
+        scoreTxt.setText(score+"");
+
+
 
     }
 
