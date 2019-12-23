@@ -28,6 +28,12 @@ public class MainActivity extends AppCompatActivity {
     boolean correct;
     boolean incorrect;
     int score;
+    int sprTlacitko;
+
+    final Kostka b1=new Kostka(100);
+    final Kostka tlacitko=new Kostka(4);
+    final Kostka k1 = new Kostka(10);
+    final Kostka k2=new Kostka(10);
 
 
     @Override
@@ -43,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         linearLayout=(LinearLayout)findViewById(R.id.linearLayout);
         scoreTxt=(TextView)findViewById(R.id.scoreTxt);
 
-
         operace();
 
 
@@ -54,10 +59,12 @@ public class MainActivity extends AppCompatActivity {
                     correct=true;
                     incorrect=false;
                     operace();
+
                 } else{
                     incorrect=true;
                     correct=false;
                     operace();
+
                 }
 
             }
@@ -69,10 +76,12 @@ public class MainActivity extends AppCompatActivity {
                     correct=true;
                     incorrect=false;
                     operace();
+
                 } else{
                     incorrect=true;
                     correct=false;
                     operace();
+
                 }
             }
         });
@@ -83,10 +92,12 @@ public class MainActivity extends AppCompatActivity {
                     correct=true;
                     incorrect=false;
                     operace();
+
                 } else{
                     incorrect=true;
                     correct=false;
                     operace();
+
                 }
             }
         });
@@ -97,21 +108,51 @@ public class MainActivity extends AppCompatActivity {
                     correct=true;
                     incorrect=false;
                     operace();
+
                 } else{
                     incorrect=true;
                     correct=false;
                     operace();
+
                 }
             }
         });
     }
     public void novyDisplay(){
         zadaniTxt.setText(display);
+        sprTlacitko=tlacitko.hod();
+        if(sprTlacitko==1) {
+            button1.setText(kint1 * kint2 + "");
+            button2.setText(kint1*(kint2-1)+"");
+            button3.setText((kint1-1)*kint2+"");
+            button4.setText(kint1+kint2+"");
+        }
+        if(sprTlacitko==2) {
+            button2.setText(kint1 * kint2 + "");
+            button3.setText(kint1*(kint2-1)+"");
+            button4.setText((kint1-1)*kint2+"");
+            button1.setText(kint1+kint2+"");
+        }
+        if(sprTlacitko==3) {
+            button3.setText(kint1 * kint2 + "");
+            button4.setText(kint1*(kint2-1)+"");
+            button1.setText((kint1-1)*kint2+"");
+            button2.setText(kint1+kint2+"");
+        }
+        if(sprTlacitko==4) {
+            button4.setText(kint1 * kint2 + "");
+            button1.setText(kint1*(kint2-1)+"");
+            button2.setText((kint1-1)*kint2+"");
+            button3.setText(kint1+kint2+"");
+        }
+        if(sprTlacitko==0) {
+            Toast.makeText(getApplicationContext(), "sprTlacitko==0", Toast.LENGTH_SHORT).show();
+        }
+        //else
+            //Toast.makeText(getApplicationContext(), "Error novyDisplay()", Toast.LENGTH_SHORT).show();
     }
 
     public void kintovani(){
-        Kostka k1 = new Kostka(4);
-        Kostka k2=new Kostka(1);
         kint1=k1.hod();
         kint2=k2.hod();
     }
@@ -121,15 +162,14 @@ public class MainActivity extends AppCompatActivity {
         display = (kint1+"x"+kint2);
         novyDisplay();
         if(correct){
-            score++;
+            score=score+10;
         }
         if(incorrect){
-            score=score-2;
+            score=score-11;
         }
         scoreTxt.setText(score+"");
 
-
-
     }
+
 
 }
