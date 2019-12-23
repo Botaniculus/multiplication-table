@@ -162,13 +162,18 @@ public class MainActivity extends AppCompatActivity {
         display = (kint1+"x"+kint2);
         novyDisplay();
         if(correct){
-            score=score+10;
+            score++;
         }
         if(incorrect){
-            score=score-11;
+            score=score-2;
         }
         scoreTxt.setText(score+"");
-
+        if(score<0){
+            scoreTxt.setTextColor(getResources().getColor(R.color.red));
+        }
+        else{
+            scoreTxt.setTextColor(getResources().getColor(R.color.blueText));
+        }
     }
 
 
